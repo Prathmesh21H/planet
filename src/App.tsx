@@ -38,10 +38,10 @@ function Star({ data, position }: { data: any, position: [number, number, number
       {/* Glow effect */}
       <mesh>
          <sphereGeometry args={[radius * 1.2, 32, 32]} />
-         <meshBasicMaterial color={color} transparent opacity={0.15} blending={THREE.AdditiveBlending} depthWrite={false} />
+         <meshBasicMaterial color={color} transparent opacity={0.25} blending={THREE.AdditiveBlending} depthWrite={false} />
       </mesh>
       {/* Physics: PointLight that casts shadows */}
-      <pointLight castShadow intensity={2.5} distance={200} decay={1.5} shadow-mapSize={[2048, 2048]} shadow-bias={-0.001} />
+      <pointLight castShadow intensity={4.5} distance={300} decay={1.2} shadow-mapSize={[2048, 2048]} shadow-bias={-0.001} />
     </mesh>
   );
 }
@@ -555,10 +555,11 @@ export default function App() {
       )}
 
       <Canvas shadows camera={{ position: [0, 20, 40], fov: 45 }}>
-        <color attach="background" args={['#050505']} />
-        <ambientLight intensity={0.05} />
+        <color attach="background" args={['#0a0b12']} />
+        <ambientLight intensity={0.4} />
+        <hemisphereLight intensity={0.5} color="#ffffff" groundColor="#000000" />
         
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        <Stars radius={100} depth={50} count={5000} factor={8} saturation={0} fade speed={1} />
         
         {editedStar && (
           <Star data={editedStar} position={[0, 0, 0]} />

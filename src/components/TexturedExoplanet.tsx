@@ -569,10 +569,10 @@ export default function TexturedExoplanet({
           emissive={highlightColor}
           emissiveIntensity={
             isSelected
-              ? 0.6
+              ? 0.7
               : hovered
-                ? 0.3
-                : profile.emissiveIntensity
+                ? 0.5
+                : profile.emissiveIntensity + 0.1 // Slight boost always for visibility
           }
           roughness={profile.roughness}
           metalness={profile.metalness}
@@ -587,7 +587,7 @@ export default function TexturedExoplanet({
             map={cloudTexture}
             color={profile.cloudColor}
             transparent={true}
-            opacity={profile.cloudOpacity}
+            opacity={profile.cloudOpacity + 0.1}
             side={THREE.FrontSide}
             depthWrite={false}
           />
@@ -600,12 +600,13 @@ export default function TexturedExoplanet({
         <meshStandardMaterial
           color={profile.atmosphereColor}
           transparent={true}
-          opacity={profile.atmosphereOpacity}
+          opacity={profile.atmosphereOpacity + 0.1}
           side={THREE.FrontSide}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
       </mesh>
+
 
       {/* Ring System (Cold gas giants with R > 5 Re) */}
       {profile.hasRings && (
